@@ -31,7 +31,7 @@ if st.button("Send Email"):
         msg.attach(MIMEText(message, 'plain'))
         with open(path_to_file,'rb') as file:
                 # Attach the file with filename to the email
-        message.attach(MIMEApplication(file.read(attachment), Name="example.csv"))
+            message.attach(MIMEApplication(file.read(attachment), Name="example.csv"))
 
             # Connect to the server
         server = smtplib.SMTP(smtp_server, smtp_port)
