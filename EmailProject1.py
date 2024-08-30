@@ -29,7 +29,7 @@ if st.button("Send Email"):
 
             # Add body to email
         msg.attach(MIMEText(message, 'plain'))
-        msg.attach(MIMEApplication(file.read(), Name=attachment))
+        msg.attach(MIMEApplication(attachment))
 
             # Connect to the server
         server = smtplib.SMTP(smtp_server, smtp_port)
