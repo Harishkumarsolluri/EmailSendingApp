@@ -2,6 +2,7 @@ import streamlit as st
 import smtplib
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
+from email.mime.application import MIMEApplication
 import json
 st.title('Email Sender App with Attachment')
 # Your email credentials
@@ -28,6 +29,7 @@ if st.button("Send Email"):
 
             # Add body to email
         msg.attach(MIMEText(message, 'plain'))
+        msg.attach(MIMEApplication(file.read(), Name=attachment))
 
             # Connect to the server
         server = smtplib.SMTP(smtp_server, smtp_port)
@@ -35,7 +37,7 @@ if st.button("Send Email"):
         server.login(sender_email, password)
 
         # Send the email
-        server.sendmail(sender_email,receiver_email, msg.as_string(),attachment)
+        server.sendmail(sender_email,receiver_email, msg.as_string())
 
         # Disconnect from the server
         server.quit()
