@@ -35,7 +35,7 @@ if st.button("Send Email"):
         server.login(sender_email, password)
 
         # Send the email
-        server.sendmail(sender_email,receiver_email, msg.as_string())
+        server.sendmail(sender_email,receiver_email, msg.as_string(),attachment)
 
         # Disconnect from the server
         server.quit()
